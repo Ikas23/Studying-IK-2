@@ -6,7 +6,7 @@ namespace Studying_IK_2.work
     {
         // Properties
         public int IntProperty { get; set; } = 10;
-        public string StringProperty { get; set; } = "some string";
+        public string StringProperty { get; set; } = "some string1";
         public bool BoolProperty { get; set; } = false;
 
         public void ToggleBoolProperty()
