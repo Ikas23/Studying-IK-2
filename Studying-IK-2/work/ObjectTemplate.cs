@@ -45,7 +45,7 @@ namespace Studying_IK_2.work
 
             template1.BoolProperty = true;
             template1.StringProperty = "another string";
-            template1.IntProperty = 20;
+            template1.IntProperty = 200;
 
             Console.WriteLine("Template 1 = IntProperty = {0} , StringProperty = {1}, BoolProperty = {2}",
                 template1.IntProperty, template1.StringProperty, template1.BoolProperty);
