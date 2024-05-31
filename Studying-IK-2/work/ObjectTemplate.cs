@@ -30,7 +30,7 @@ namespace Studying_IK_2.work
 
         public void Print()
         {
-            Console.WriteLine($"StringProperty: {StringProperty}, StringProperty2: {StringProperty2}");
+            Console.WriteLine($"StringProperty1: {StringProperty}, StringProperty2: {StringProperty2}");
         }
     }
 
