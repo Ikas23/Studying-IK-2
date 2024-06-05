@@ -1,18 +1,24 @@
 ﻿using System;
 
-namespace Studying_IK_2
+namespace studying_c_sharp_isaac_kaz
 {
     public class Cola
     {
         public int NumOfBottle { get; set; }
         public string ColaName { get; set; }
         public int DateOfExpiration { get; set; }
+        public double Price { get; set; }
 
-        public Cola(int numOfBottle, string colaName, int dateOfExpiration)
+        public Cola(int numOfBottle, string colaName, int dateOfExpiration, double price)
         {
-            NumOfBottle = numOfBottle;
-            ColaName = colaName;
-            DateOfExpiration = dateOfExpiration;
+            this.NumOfBottle = numOfBottle;
+            this.ColaName = colaName;
+            this.DateOfExpiration = dateOfExpiration;
+            this.Price = price;
+        }
+
+        public Cola() : this(3, "Zero", 2025, 12)
+        {
         }
 
         public void DisplayColaInfo()
@@ -23,35 +29,56 @@ namespace Studying_IK_2
 
     public class Box
     {
-        public Cola[] Colas { get; private set; }
-        public int BottlePerBox { get; set; }
-        public int BoxPrice { get; set; }
+        public Cola[] Colas { get; set; }
+        public int BottlePerBox { get; private set; }
+        public double BoxPrice { get; private set; }
 
-        public Box(int bottlePerBox, int boxPrice)
+        public Box(int bottlePerBox, double boxPrice)
         {
             BottlePerBox = bottlePerBox;
             BoxPrice = boxPrice;
             Colas = new Cola[4];
         }
 
-        public void BoxesPrice(int numOfBox)
+        public void DisplayBoxPrice(int numOfBox)
         {
-            Console.WriteLine("The price is: " + numOfBox * BoxPrice);
+            Console.WriteLine("The total price is: " + numOfBox * BoxPrice);
         }
     }
 
     public static class RunApp
     {
+        public static void Discount(Cola cola)
+        {
+            cola.Price *= 0.9;
+        }
+
         public static void Demo()
         {
-            Cola cola1 = new Cola(10, "CocaCola", 2025);
-            Cola cola2 = new Cola(5, "Pepsi", 2024);
+            Cola cola1 = new Cola(10, "CocaCola", 2025, 12);
+            Cola cola2 = new Cola(5, "Pepsi", 2024, 12);
 
             cola1.DisplayColaInfo();
             cola2.DisplayColaInfo();
 
             Box box = new Box(6, 20);
-            box.BoxesPrice(3);
+            box.DisplayBoxPrice(3);
+
+            // Apply discount
+            Discount(cola1);
+            Discount(cola2);
+
+            // Display prices after discount
+            Console.WriteLine($"Discounted Price of {cola1.ColaName}: {cola1.Price}");
+            Console.WriteLine($"Discounted Price of {cola2.ColaName}: {cola2.Price}");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            RunApp.Demo();
         }
     }
 }
